@@ -589,17 +589,14 @@
 			}
 		}*/
 		
-			// Ganti dengan ID elemen audio lokal
+						/// Ambil elemen audio
 			var audioElement = document.getElementById("local-audio");
 
 			// Fungsi untuk mengubah ikon play/pause
-			
 			function togglePlayButton(play) {
-			// Mengambil ikon play dan pause dari folder yang ditentukan
-			var iconPath = play ? "file:///D:/wedding/wedding-main/images/audio/pause.png" : "file:///D:/wedding/wedding-main/images/audio/play.png";
-			document.getElementById("audio-icon").src = iconPath;
-			
-}
+				var iconPath = play ? "https://hairullana.github.io/wedding/images/audio/pause.png" : "https://hairullana.github.io/wedding/images/audio/play.png";
+				document.getElementById("audio-icon").src = iconPath;
+			}
 
 			// Fungsi untuk mengontrol audio lokal
 			function toggleAudio() {
@@ -629,6 +626,12 @@
 			window.onload = function() {
 				playAudio();
 			};
+
+			// Fungsi untuk memutar audio saat tombol "Buka Undangan" diklik
+			function openInvitation() {
+				playAudio(); // Memutar audio
+				// Tambahkan logika lain untuk membuka undangan jika diperlukan
+			}
 		
 	</script>
 
