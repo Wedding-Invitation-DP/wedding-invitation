@@ -72,7 +72,7 @@
 </head>
 
 <body>
-
+	<audio id="local-audio" src="images/audio/your-audio-file.mp3" preload="auto" loop></audio>
 	<div class="fh5co-loader"></div>
 
 	<div id="page">
@@ -523,16 +523,16 @@
 			$("html, body").animate({ scrollTop: $(`#${el}`).offset().top }, 1000);
 		}
 
-		// 2. This code loads the IFrame Player API code asynchronously.
+		/*// 2. This code loads the IFrame Player API code asynchronously.
 		var tag = document.createElement('script');
 
 		tag.src = "https://www.youtube.com/iframe_api";
 		var firstScriptTag = document.getElementsByTagName('script')[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);*/
 
 		// 3. This function creates an <iframe> (and YouTube player)
 		//    after the API code downloads.
-		var player1;
+		/*var player1;
 		function onYouTubeIframeAPIReady() {
 
 			var ctrlq1 = document.getElementById("youtube-audio1");
@@ -586,7 +586,45 @@
 			if (event.data === 0) {
 				togglePlayButton1(false);
 			}
-		}
+		}*/
+		
+			// Ganti dengan ID elemen audio lokal
+			var audioElement = document.getElementById("local-audio");
+
+			// Fungsi untuk mengubah ikon play/pause
+			function togglePlayButton(play) {
+				document.getElementById("audio-icon").src = play ? "images/audio/pause.png" : "images/audio/play.png";
+			}
+
+			// Fungsi untuk mengontrol audio lokal
+			function toggleAudio() {
+				if (audioElement.paused) {
+					audioElement.play();
+					togglePlayButton(true);
+				} else {
+					audioElement.pause();
+					togglePlayButton(false);
+				}
+			}
+
+			// Fungsi untuk memulai audio saat halaman dimuat
+			function playAudio() {
+				if (audioElement.paused) {
+					audioElement.play();
+					togglePlayButton(true);
+				}
+			}
+
+			// Event listener untuk mengatur kontrol audio
+			audioElement.addEventListener('ended', function() {
+				togglePlayButton(false);
+			});
+
+			// Memastikan audio dimulai saat halaman dimuat
+			window.onload = function() {
+				playAudio();
+			};
+		
 	</script>
 
 </body>
