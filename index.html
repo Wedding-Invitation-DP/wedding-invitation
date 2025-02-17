@@ -73,6 +73,12 @@
 
 <body>
 	<audio id="local-audio" src="images/audio/your-audio-file.mp3" preload="auto" loop></audio>
+	<!-- Kontrol audio -->
+    <div class="audio-controls">
+        <div id="audio-control" onclick="toggleAudio()">
+            <img id="audio-icon" src="file:///D:/wedding/wedding-main/images/audio/play.png" alt="Play/Pause" />
+        </div>
+    </div>
 	<div class="fh5co-loader"></div>
 
 	<div id="page">
@@ -189,9 +195,9 @@
 							</p>
 							<div id="social-media-rehan">
 								<ul class="fh5co-social-icons">
-									<li><a target="_blank" href="https://instagram.com/tahtaramadhani"><i
+									<li><a target="_blank" href="https://www.instagram.com/_latipah12"><i
 												class="icon-instagram-with-circle"></i></a></li>
-									<li><a target="_blank" href="https://facebook.com/tahtaramadhani99"><i
+									<li><a target="_blank"><i
 												class="icon-facebook-with-circle"></i></a></li>
 								</ul>
 							</div>
@@ -211,9 +217,9 @@
 							</p>
 							<div id="social-media-molid">
 								<ul class="fh5co-social-icons">
-									<li><a target="_blank" href="https://instagram.com/hairullana_"><i
+									<li><a target="_blank" href="https://www.instagram.com/rizki_pajarr"><i
 												class="icon-instagram-with-circle"></i></a></li>
-									<li><a target="_blank" href="https://facebook.com/hairullana99"><i
+									<li><a target="_blank"><i
 												class="icon-facebook-with-circle"></i></a></li>
 								</ul>
 							</div>
@@ -588,16 +594,15 @@
 			}
 		}*/
 		
-			// Ganti dengan ID elemen audio lokal
+			// Ambil elemen audio
 			var audioElement = document.getElementById("local-audio");
 
 			// Fungsi untuk mengubah ikon play/pause
-			
 			function togglePlayButton(play) {
-			// Mengambil ikon play dan pause dari folder yang ditentukan
-			var iconPath = play ? "file:///D:/wedding/wedding-main/images/audio/pause.png" : "file:///D:/wedding/wedding-main/images/audio/play.png";
-			document.getElementById("audio-icon").src = iconPath;
-}
+				// Mengambil ikon play dan pause dari folder yang ditentukan
+				var iconPath = play ? "file:///D:/wedding/wedding-main/images/audio/pause.png" : "file:///D:/wedding/wedding-main/images/audio/play.png";
+				document.getElementById("audio-icon").src = iconPath;
+			}
 
 			// Fungsi untuk mengontrol audio lokal
 			function toggleAudio() {
