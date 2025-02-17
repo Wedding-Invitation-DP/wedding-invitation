@@ -73,12 +73,7 @@
 
 <body>
 	<audio id="local-audio" src="images/audio/your-audio-file.mp3" preload="auto" loop></audio>
-	<!-- Kontrol audio -->
-    <div class="audio-controls">
-        <div id="audio-control" onclick="toggleAudio()">
-            <img id="audio-icon" src="file:///D:/wedding/wedding-main/images/audio/play.png" alt="Play/Pause" />
-        </div>
-    </div>
+	
 	<div class="fh5co-loader"></div>
 
 	<div id="page">
@@ -594,15 +589,17 @@
 			}
 		}*/
 		
-			// Ambil elemen audio
+			// Ganti dengan ID elemen audio lokal
 			var audioElement = document.getElementById("local-audio");
 
 			// Fungsi untuk mengubah ikon play/pause
+			
 			function togglePlayButton(play) {
-				// Mengambil ikon play dan pause dari folder lokal
-				var iconPath = play ? "file:///D:/wedding/wedding-main/images/audio/pause.png" : "file:///D:/wedding/wedding-main/images/audio/play.png";
-				document.getElementById("audio-icon").src = iconPath;
-			}
+			// Mengambil ikon play dan pause dari folder yang ditentukan
+			var iconPath = play ? "file:///D:/wedding/wedding-main/images/audio/pause.png" : "file:///D:/wedding/wedding-main/images/audio/play.png";
+			document.getElementById("audio-icon").src = iconPath;
+			
+}
 
 			// Fungsi untuk mengontrol audio lokal
 			function toggleAudio() {
