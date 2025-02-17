@@ -592,9 +592,12 @@
 			var audioElement = document.getElementById("local-audio");
 
 			// Fungsi untuk mengubah ikon play/pause
+			
 			function togglePlayButton(play) {
-				document.getElementById("audio-icon").src = play ? "images/audio/pause.png" : "images/audio/play.png";
-			}
+			// Mengambil ikon play dan pause dari folder yang ditentukan
+			var iconPath = play ? "file:///D:/wedding/wedding-main/images/audio/pause.png" : "file:///D:/wedding/wedding-main/images/audio/play.png";
+			document.getElementById("audio-icon").src = iconPath;
+}
 
 			// Fungsi untuk mengontrol audio lokal
 			function toggleAudio() {
