@@ -117,10 +117,14 @@
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 							<h1>Dina & Pajar</h1>
-							<p style="margin-bottom: 0">Kepada Bapak/Ibu/Saudara/i <b class="nama-undangan"></b></p>
+							<p style="margin-bottom: 0">Kepada Bapak/Ibu/Saudara/i</p>
+							<h3 style="color: #bf9b73; margin-bottom: 0;"> <b class="nama-undangan"></b></h3>
+							
 							<p>Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>
 
-							<button class="btn btn-primary" id="open-invitation">Buka Undangan</button>
+							<!-- ini utama <button class="btn btn-primary" id="open-invitation">Buka Undangan</button> -->
+							<button class="btn btn-primary" id="open-invitation" onClick="enableScroll()">Buka Undangan</button>
+							<!-- <a href="#home" class="btn btn-lg mt-4" onClick="enableScroll()">Lihat Undangan</a> -->
 						</div>
 					</div>
 				</div>
@@ -521,72 +525,142 @@
 			$("html, body").animate({ scrollTop: $(`#${el}`).offset().top }, 1000);
 		}
 
-		// 2. This code loads the IFrame Player API code asynchronously.
-		var tag = document.createElement('script');
+		// // 2. This code loads the IFrame Player API code asynchronously.
+		// var tag = document.createElement('script');
 
-		tag.src = "https://www.youtube.com/iframe_api";
-		var firstScriptTag = document.getElementsByTagName('script')[0];
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		// tag.src = "https://www.youtube.com/iframe_api";
+		// var firstScriptTag = document.getElementsByTagName('script')[0];
+		// firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 		// 3. This function creates an <iframe> (and YouTube player)
 		//    after the API code downloads.
-		var player1;
-		function onYouTubeIframeAPIReady() {
+		// var player1;
+		// function onYouTubeIframeAPIReady() {
 
-			var ctrlq1 = document.getElementById("youtube-audio1");
-			ctrlq1.innerHTML = '<img id="youtube-icon1" src=""/><div id="youtube-player1"></div>';
-			ctrlq1.style.cssText = 'width:20px;margin:0 auto;cursor:pointer;cursor:hand;display:none';
-			ctrlq1.onclick = toggleAudio1;
+		// 	var ctrlq1 = document.getElementById("youtube-audio1");
+		// 	ctrlq1.innerHTML = '<img id="youtube-icon1" src=""/><div id="youtube-player1"></div>';
+		// 	ctrlq1.style.cssText = 'width:20px;margin:0 auto;cursor:pointer;cursor:hand;display:none';
+		// 	ctrlq1.onclick = toggleAudio1;
 
-			player1 = new YT.Player('youtube-player1', {
-				height: '0',
-				width: '0',
-				videoId: ctrlq1.dataset.video,
-				playerVars: {
-					autoplay: ctrlq1.dataset.autoplay,
-					loop: ctrlq1.dataset.loop,
-				},
-				events: {
-					'onReady': onPlayerReady1,
-					'onStateChange': onPlayerStateChange1
-				}
-			});
-		}
+		// 	player1 = new YT.Player('youtube-player1', {
+		// 		height: '0',
+		// 		width: '0',
+		// 		videoId: ctrlq1.dataset.video,
+		// 		playerVars: {
+		// 			autoplay: ctrlq1.dataset.autoplay,
+		// 			loop: ctrlq1.dataset.loop,
+		// 		},
+		// 		events: {
+		// 			'onReady': onPlayerReady1,
+		// 			'onStateChange': onPlayerStateChange1
+		// 		}
+		// 	});
+		// }
 
-		function togglePlayButton1(play) {
-			document.getElementById("youtube-icon1").src = play ? "https://hairullana.github.io/wedding/images/audio/pause.png" : "https://hairullana.github.io/wedding/images/audio/play.png";
-		}
+	// 	function togglePlayButton1(play) {
+	// 		document.getElementById("youtube-icon1").src = play ? "https://hairullana.github.io/wedding/images/audio/pause.png" : "https://hairullana.github.io/wedding/images/audio/play.png";
+	// 	}
 
-		function toggleAudio1() {
-			if (player1.getPlayerState() == 1 || player1.getPlayerState() == 3) {
-				player1.pauseVideo();
-				togglePlayButton1(false);
-			} else {
-				player1.playVideo();
-				togglePlayButton1(true);
-			}
-		}
+	// 	function toggleAudio1() {
+	// 		if (player1.getPlayerState() == 1 || player1.getPlayerState() == 3) {
+	// 			player1.pauseVideo();
+	// 			togglePlayButton1(false);
+	// 		} else {
+	// 			player1.playVideo();
+	// 			togglePlayButton1(true);
+	// 		}
+	// 	}
 
-		function playAudio1() {
-			if (!(player1.getPlayerState() == 1 || player1.getPlayerState() == 3)) {
-				player1.playVideo();
-				togglePlayButton1(true);
-			}
-		}
+	// 	function playAudio1() {
+	// 		if (!(player1.getPlayerState() == 1 || player1.getPlayerState() == 3)) {
+	// 			player1.playVideo();
+	// 			togglePlayButton1(true);
+	// 		}
+	// 	}
 
-		function onPlayerReady1(event) {
-			player1.setPlaybackQuality("small");
-			document.getElementById("youtube-audio1").style.display = "block";
-			togglePlayButton1(player1.getPlayerState() !== 5);
-		}
+	// 	function onPlayerReady1(event) {
+	// 		player1.setPlaybackQuality("small");
+	// 		document.getElementById("youtube-audio1").style.display = "block";
+	// 		togglePlayButton1(player1.getPlayerState() !== 5);
+	// 	}
 
-		function onPlayerStateChange1(event) {
-			if (event.data === 0) {
-				togglePlayButton1(false);
-			}
-		}
+	// 	function onPlayerStateChange1(event) {
+	// 		if (event.data === 0) {
+	// 			togglePlayButton1(false);
+	// 		}
+	// 	}
 		
+	// 
+	 
 	</script>
+
+	<div id="audio-container">
+		<audio id="song" autoplay loop>
+		  <source src="audio/save-and-sound.mp3" type="audio/mp3">
+		</audio>
+	
+		<div class="audio-icon-wrapper" style="display: none;">
+		  <i class="bi bi-disc"></i>
+		</div>
+	  </div>
+	
+	
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+		crossorigin="anonymous"></script>
+	
+	  <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+	  <script>
+		const rootElement = document.querySelector(":root");
+		const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
+		const audioIcon = document.querySelector('.audio-icon-wrapper i');
+		const song = document.querySelector('#song');
+		let isPlaying = false;
+	
+		function disableScroll() {
+		  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		  scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+	
+		  window.onscroll = function () {
+			window.scrollTo(scrollTop, scrollLeft);
+		  }
+	
+		  rootElement.style.scrollBehavior = 'auto';
+		}
+	
+		function enableScroll() {
+		  window.onscroll = function () { }
+		  rootElement.style.scrollBehavior = 'smooth';
+		  // localStorage.setItem('opened', 'true');
+		  playAudio();
+		}
+	
+		function playAudio() {
+		  song.volume = 1.0;
+		  audioIconWrapper.style.display = 'flex';
+		  song.play();
+		  isPlaying = true;
+		}
+	
+		audioIconWrapper.onclick = function () {
+		  if (isPlaying) {
+			song.pause();
+			audioIcon.classList.remove('bi-disc');
+			audioIcon.classList.add('bi-pause-circle');
+		  } else {
+			song.play();
+			audioIcon.classList.add('bi-disc');
+			audioIcon.classList.remove('bi-pause-circle');
+		  }
+	
+		  isPlaying = !isPlaying;
+		}
+	
+		// if (!localStorage.getItem('opened')) {
+		//   disableScroll();
+		// }
+		disableScroll();
+	  </script>
 
 </body>
 
