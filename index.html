@@ -122,7 +122,7 @@
 
 		<div id="audio-control">
 			<i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
-			<span id="play-pause-text" style="margin-left: 8px;">Play</span>
+			<span id="play-pause-text" style="margin-left: 8px;">Pause</span>
 		</div>
 		
 		<audio id="song" autoplay loop>
@@ -134,6 +134,9 @@
 			const playPauseText = document.getElementById('play-pause-text');
 			const song = document.getElementById('song');
 			let isPlaying = true; // Set to true for auto play
+		
+			// Memulai pemutaran audio secara otomatis saat halaman dimuat
+			song.play();
 		
 			audioIcon.onclick = function () {
 				if (isPlaying) {
