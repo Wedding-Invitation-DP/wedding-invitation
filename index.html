@@ -120,66 +120,72 @@
 			</div>
 		</div>
 
-		<div id="audio-container">
-  <audio id="song" autoplay loop>
-    <source src="audio/save-and-sound.mp3" type="audio/mp3">
-  </audio>
-
-  <div class="audio-icon-wrapper" style="display: none;">
-    <i class="bi bi-disc"></i>
-  </div>
-</div>
-  <script>
-    const rootElement = document.querySelector(":root");
-    const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
-    const audioIcon = document.querySelector('.audio-icon-wrapper i');
-    const song = document.querySelector('#song');
-    let isPlaying = false;
-
-    function disableScroll() {
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-      window.onscroll = function () {
-        window.scrollTo(scrollTop, scrollLeft);
-      }
-
-      rootElement.style.scrollBehavior = 'auto';
-    }
-
-    function enableScroll() {
-      window.onscroll = function () { }
-      rootElement.style.scrollBehavior = 'smooth';
-      // localStorage.setItem('opened', 'true');
-      playAudio();
-    }
-
-    function playAudio() {
-      song.volume = 1.0;
-      audioIconWrapper.style.display = 'flex';
-      song.play();
-      isPlaying = true;
-    }
-
-    audioIconWrapper.onclick = function () {
-      if (isPlaying) {
-        song.pause();
-        audioIcon.classList.remove('bi-disc');
-        audioIcon.classList.add('bi-pause-circle');
-      } else {
-        song.play();
-        audioIcon.classList.add('bi-disc');
-        audioIcon.classList.remove('bi-pause-circle');
-      }
-
-      isPlaying = !isPlaying;
-    }
-
-    // if (!localStorage.getItem('opened')) {
-    //   disableScroll();
-    // }
-    disableScroll();
-  </script>
+		<<div id="audio-container">
+			<audio id="song" autoplay loop>
+				<source src="audio/save-and-sound.mp3" type="audio/mp3">
+			</audio>
+		
+			<div class="audio-icon-wrapper" style="display: flex; align-items: center; cursor: pointer;">
+				<i id="audio-icon" class="bi bi-pause-circle" style="font-size: 24px;"></i>
+				<span id="play-pause-text" style="margin-left: 8px;">Pause</span>
+			</div>
+		</div>
+		
+		<script>
+			const rootElement = document.querySelector(":root");
+			const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
+			const audioIcon = document.getElementById('audio-icon');
+			const playPauseText = document.getElementById('play-pause-text');
+			const song = document.querySelector('#song');
+			let isPlaying = true; // Set to true for auto play
+		
+			function disableScroll() {
+				scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+				scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+		
+				window.onscroll = function () {
+					window.scrollTo(scrollTop, scrollLeft);
+				}
+		
+				rootElement.style.scrollBehavior = 'auto';
+			}
+		
+			function enableScroll() {
+				window.onscroll = function () { }
+				rootElement.style.scrollBehavior = 'smooth';
+				// localStorage.setItem('opened', 'true');
+				playAudio();
+			}
+		
+			function playAudio() {
+				song.volume = 1.0;
+				song.play();
+				isPlaying = true;
+			}
+		
+			audioIconWrapper.onclick = function () {
+				if (isPlaying) {
+					song.pause();
+					audioIcon.classList.remove('bi-pause-circle');
+					audioIcon.classList.add('bi-play-circle');
+					playPauseText.textContent = 'Play'; // Update text to Play
+				} else {
+					song.play();
+					audioIcon.classList.remove('bi-play-circle');
+					audioIcon.classList.add('bi-pause-circle');
+					playPauseText.textContent = 'Pause'; // Update text to Pause
+				}
+		
+				isPlaying = !isPlaying;
+			}
+		
+			// Memastikan audio diputar saat halaman dimuat
+			window.onload = function() {
+				playAudio(); // Coba untuk memutar audio
+			};
+		
+			disableScroll();
+		</script>
 
 		<!-- <div id="audio-control">
 			<i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
