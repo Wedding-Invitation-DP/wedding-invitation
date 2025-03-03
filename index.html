@@ -123,13 +123,13 @@
 				</ul>
 			</div>
 		</div>
-
-		<div id="audio-control">
-    <i id="audio-icon" class="bi bi-pause-circle" style="font-size: 24px; cursor: pointer;"></i>
-    <span id="play-pause-text" style="margin-left: 8px;">Pause</span>
+		
+<<div id="audio-control">
+    <i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
+    <span id="play-pause-text" style="margin-left: 8px;">Play</span>
 </div>
 
-<audio id="song" autoplay loop muted>
+<audio id="song" loop muted>
     <source src="audio/save-and-sound.mp3" type="audio/mp3">
 </audio>
 
@@ -139,7 +139,7 @@
     const song = document.getElementById('song');
     let isPlaying = false; // Set to false initially
 
-    // Memulai pemutaran audio secara otomatis saat halaman dimuat
+    // Memulai pemutaran audio secara otomatis dalam keadaan muted
     song.play().then(() => {
         isPlaying = true;
         audioIcon.classList.remove('bi-play-circle');
@@ -156,6 +156,7 @@
             audioIcon.classList.add('bi-play-circle');
             playPauseText.textContent = 'Play'; // Update text to Play
         } else {
+            song.muted = false; // Unmute audio when playing
             song.play();
             audioIcon.classList.remove('bi-play-circle');
             audioIcon.classList.add('bi-pause-circle');
@@ -164,6 +165,7 @@
         isPlaying = !isPlaying;
     }
 </script>
+
 		
 		<!-- <div id="audio-control">
 			<i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
