@@ -75,8 +75,9 @@
 <body>
 	
 		<div id="page">
-<!-- test -->
-			<div id="floating-button" class="float">
+
+		<!--Floating button-->
+		<div id="floating-button" class="float">
 			<div class="control-center open">
 				<!-- <div class="audio-play">
 					<div data-video="QZng89VxKWg" data-autoplay="0" data-loop="1" id="youtube-audio1"></div>
@@ -102,67 +103,8 @@
 						style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAB7UlEQVRIie2VPUiVURjH/+eqSSJN4tDWRRAH5xD8QDCwgqAWhwwSaarBwUGaHFwcBAchGqNNdDaKoKAkBEvUURAVRInw82Jx0Z/De64+Xu5773nv0CD3P533eZ//+T3nW6qoomstwAEPgXfAKnAA7AE/gWGgJsbXAIwCi8ARkAF+AS+AqlLQJmCB4voMDAL1xvfUFxin98WgLX5kIdoHbnvfK+AswJMBvgGPLbQGWAmEAgx7XzuQTeDLaSgHfpLA9Bu45X0/yoAC/AXSKUn9AfvuTNIXSb3OuUOgQ9LdAJ8kfZDUJenYf9dKGqiW1JyXuCbpq6RlSRuStiStO+f2TM6DQOiSpOfOuV1gStKIj3eKyx2ZJdqxrlRvwHzMNP4DlomOYx/m+AEdJm9H5mM8cBQCNvKA00AbcKOIp9GuswW3JgBnjO9toKfWVmrBdQnAVkkKvlBKUsbHY6ephNbKMaUkffftj0C6jD5uhiRhrtlcoAXY9jPwJrATq+5AT+eVNfbBZqLjdAq0JwTPBOQ7YM54Nu3PMR/8A9wrYH4UAwZ4VgSaBmYtFOi1CSlgxiTMA5PAhG9jcrfywFngJQGXT1x1VcBrosc8X/sm734BOERPX9AdXrBCoh3YI+mOogdiXdIn59xJWSOqqKL/qXMXI9MKbss7gAAAAABJRU5ErkJggg==)">
 					</li>
 				</ul>
-				<!-- Play/Pause Button -->
-				<div class="audio-icon-wrapper" style="display: flex; align-items: center; cursor: pointer; margin-left: auto;">
-					<i class="bi bi-pause-circle" style="font-size: 24px;"></i>
-					<span id="play-pause-text" style="margin-left: 8px;">Pause</span>
-				</div>
 			</div>
 		</div>
-		
-		<script>
-			const rootElement = document.querySelector(":root");
-			const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
-			const audioIcon = document.querySelector('.audio-icon-wrapper i');
-			const song = document.querySelector('#song');
-			const playPauseText = document.getElementById('play-pause-text');
-			let isPlaying = true;
-		
-			function disableScroll() {
-				scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-				scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-		
-				window.onscroll = function () {
-					window.scrollTo(scrollTop, scrollLeft);
-				}
-		
-				rootElement.style.scrollBehavior = 'auto';
-			}
-		
-			function enableScroll() {
-				window.onscroll = function () { }
-				rootElement.style.scrollBehavior = 'smooth';
-				playAudio();
-			}
-		
-			function playAudio() {
-				song.volume = 1.0;
-				audioIconWrapper.style.display = 'flex';
-				song.play();
-				isPlaying = true;
-				playPauseText.textContent = 'Pause'; // Update text to Pause
-				audioIcon.classList.remove('bi-play-circle');
-				audioIcon.classList.add('bi-pause-circle');
-			}
-		
-			audioIconWrapper.onclick = function () {
-				if (isPlaying) {
-					song.pause();
-					audioIcon.classList.remove('bi-pause-circle');
-					audioIcon.classList.add('bi-play-circle');
-					playPauseText.textContent = 'Play'; // Update text to Play
-				} else {
-					song.play();
-					audioIcon.classList.remove('bi-play-circle');
-					audioIcon.classList.add('bi-pause-circle');
-					playPauseText.textContent = 'Pause'; // Update text to Pause
-				}
-		
-				isPlaying = !isPlaying;
-			}
-		
-			disableScroll();
-		</script>
 
 		<div id="overlay">
 			<div class="content">
