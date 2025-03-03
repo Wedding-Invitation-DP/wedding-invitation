@@ -612,7 +612,7 @@
     </div>
 </div>
 
-	<script>
+		<script>
 		const rootElement = document.querySelector(":root");
 		const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
 		const audioIcon = document.querySelector('.audio-icon-wrapper i');
@@ -643,18 +643,20 @@
 			song.play();
 			isPlaying = true;
 			playPauseText.textContent = 'Pause'; // Update text to Pause
+			audioIcon.classList.remove('bi-play-circle');
+			audioIcon.classList.add('bi-pause-circle');
 		}
 
 		audioIconWrapper.onclick = function () {
 			if (isPlaying) {
 				song.pause();
-				audioIcon.classList.remove('bi-play-circle');
-				audioIcon.classList.add('bi-pause-circle');
+				audioIcon.classList.remove('bi-pause-circle');
+				audioIcon.classList.add('bi-play-circle');
 				playPauseText.textContent = 'Play'; // Update text to Play
 			} else {
 				song.play();
-				audioIcon.classList.remove('bi-pause-circle');
-				audioIcon.classList.add('bi-play-circle');
+				audioIcon.classList.remove('bi-play-circle');
+				audioIcon.classList.add('bi-pause-circle');
 				playPauseText.textContent = 'Pause'; // Update text to Pause
 			}
 
