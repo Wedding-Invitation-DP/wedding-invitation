@@ -130,6 +130,60 @@
 		</audio>
 		
 		<script>
+    const rootElement = document.querySelector(":root");
+    const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
+    const audioIcon = document.querySelector('.audio-icon-wrapper i');
+    const song = document.querySelector('#song');
+    const playPauseText = document.getElementById('play-pause-text');
+    let isPlaying = true;
+
+    function disableScroll() {
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+        window.onscroll = function () {
+            window.scrollTo(scrollTop, scrollLeft);
+        }
+
+        rootElement.style.scrollBehavior = 'auto';
+    }
+
+    function enableScroll() {
+        window.onscroll = function () { }
+        rootElement.style.scrollBehavior = 'smooth';
+        playAudio();
+    }
+
+    function playAudio() {
+        song.volume = 1.0;
+        audioIconWrapper.style.display = 'flex';
+        song.play();
+        isPlaying = true;
+        playPauseText.textContent = 'Pause'; // Update text to Pause
+        audioIcon.classList.remove('bi-play-circle');
+        audioIcon.classList.add('bi-pause-circle');
+    }
+
+    audioIconWrapper.onclick = function () {
+        if (isPlaying) {
+            song.pause();
+            audioIcon.classList.remove('bi-pause-circle');
+            audioIcon.classList.add('bi-play-circle');
+            playPauseText.textContent = 'Play'; // Update text to Play
+        } else {
+            song.play();
+            audioIcon.classList.remove('bi-play-circle');
+            audioIcon.classList.add('bi-pause-circle');
+            playPauseText.textContent = 'Pause'; // Update text to Pause
+        }
+
+        isPlaying = !isPlaying;
+    }
+
+    disableScroll();
+</script> 
+
+		<!-- <script>
 			const audioIcon = document.getElementById('audio-icon');
 			const playPauseText = document.getElementById('play-pause-text');
 			const song = document.getElementById('song');
@@ -163,7 +217,7 @@
 					playAudio(); // Panggil fungsi untuk memutar audio
 				}
 			}
-		</script>
+		</script> -->
 
 		<div id="overlay">
 			<div class="content">
