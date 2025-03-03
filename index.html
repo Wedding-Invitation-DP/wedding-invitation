@@ -122,10 +122,10 @@
 
 		<div id="audio-control">
 			<i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
-			<span id="play-pause-text" style="margin-left: 8px;">Pause</span>
+			<span id="play-pause-text" style="margin-left: 8px;">Play</span>
 		</div>
 		
-		<audio id="song" autoplay loop>
+		<audio id="song" loop>
 			<source src="audio/save-and-sound.mp3" type="audio/mp3">
 		</audio>
 		
@@ -133,24 +133,35 @@
 			const audioIcon = document.getElementById('audio-icon');
 			const playPauseText = document.getElementById('play-pause-text');
 			const song = document.getElementById('song');
-			let isPlaying = true; // Set to true for auto play
+			let isPlaying = false; // Set to false initially
 		
-			// Memulai pemutaran audio secara otomatis saat halaman dimuat
-			song.play();
+			// Fungsi untuk memulai audio
+			function playAudio() {
+				song.play().then(() => {
+					isPlaying = true;
+					audioIcon.classList.remove('bi-play-circle');
+					audioIcon.classList.add('bi-pause-circle');
+					playPauseText.textContent = 'Pause'; // Update text to Pause
+				}).catch((error) => {
+					console.log("Audio play failed: ", error);
+					// Jika gagal, tampilkan pesan atau tombol untuk memulai audio
+				});
+			}
+		
+			// Coba untuk memutar audio saat halaman dimuat
+			window.onload = function() {
+				playAudio(); // Coba untuk memutar audio
+			};
 		
 			audioIcon.onclick = function () {
 				if (isPlaying) {
 					song.pause();
-					audioIcon.classList.remove('bi-play-circle');
-					audioIcon.classList.add('bi-pause-circle');
-					playPauseText.textContent = 'Play'; // Update text to Play
-				} else {
-					song.play();
 					audioIcon.classList.remove('bi-pause-circle');
 					audioIcon.classList.add('bi-play-circle');
-					playPauseText.textContent = 'Pause'; // Update text to Pause
+					playPauseText.textContent = 'Play'; // Update text to Play
+				} else {
+					playAudio(); // Panggil fungsi untuk memutar audio
 				}
-				isPlaying = !isPlaying;
 			}
 		</script>
 
