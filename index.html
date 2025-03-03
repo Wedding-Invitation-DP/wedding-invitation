@@ -69,7 +69,7 @@
     
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	
+
 	<style>
         /* Styling untuk kontrol audio di pojok kanan atas */
         #audio-control {
@@ -125,45 +125,45 @@
 		</div>
 
 		<div id="audio-control">
-			<i id="audio-icon" class="bi bi-pause-circle" style="font-size: 24px; cursor: pointer;"></i>
-			<span id="play-pause-text" style="margin-left: 8px;">Pause</span>
-		</div>
-		
-		<audio id="song" autoplay loop muted>
-			<source src="audio/save-and-sound.mp3" type="audio/mp3">
-		</audio>
-		
-		<script>
-			const audioIcon = document.getElementById('audio-icon');
-			const playPauseText = document.getElementById('play-pause-text');
-			const song = document.getElementById('song');
-			let isPlaying = false; // Set to false initially
-		
-			// Memulai pemutaran audio secara otomatis saat halaman dimuat
-			song.play().then(() => {
-				isPlaying = true;
-				audioIcon.classList.remove('bi-play-circle');
-				audioIcon.classList.add('bi-pause-circle');
-				playPauseText.textContent = 'Pause'; // Update text to Pause
-			}).catch((error) => {
-				console.error("Playback failed:", error);
-			});
-		
-			audioIcon.onclick = function () {
-				if (isPlaying) {
-					song.pause();
-					audioIcon.classList.remove('bi-pause-circle');
-					audioIcon.classList.add('bi-play-circle');
-					playPauseText.textContent = 'Play'; // Update text to Play
-				} else {
-					song.play();
-					audioIcon.classList.remove('bi-play-circle');
-					audioIcon.classList.add('bi-pause-circle');
-					playPauseText.textContent = 'Pause'; // Update text to Pause
-				}
-				isPlaying = !isPlaying;
-			}
-		</script>
+    <i id="audio-icon" class="bi bi-pause-circle" style="font-size: 24px; cursor: pointer;"></i>
+    <span id="play-pause-text" style="margin-left: 8px;">Pause</span>
+</div>
+
+<audio id="song" autoplay loop muted>
+    <source src="audio/save-and-sound.mp3" type="audio/mp3">
+</audio>
+
+<script>
+    const audioIcon = document.getElementById('audio-icon');
+    const playPauseText = document.getElementById('play-pause-text');
+    const song = document.getElementById('song');
+    let isPlaying = false; // Set to false initially
+
+    // Memulai pemutaran audio secara otomatis saat halaman dimuat
+    song.play().then(() => {
+        isPlaying = true;
+        audioIcon.classList.remove('bi-play-circle');
+        audioIcon.classList.add('bi-pause-circle');
+        playPauseText.textContent = 'Pause'; // Update text to Pause
+    }).catch((error) => {
+        console.error("Playback failed:", error);
+    });
+
+    audioIcon.onclick = function () {
+        if (isPlaying) {
+            song.pause();
+            audioIcon.classList.remove('bi-pause-circle');
+            audioIcon.classList.add('bi-play-circle');
+            playPauseText.textContent = 'Play'; // Update text to Play
+        } else {
+            song.play();
+            audioIcon.classList.remove('bi-play-circle');
+            audioIcon.classList.add('bi-pause-circle');
+            playPauseText.textContent = 'Pause'; // Update text to Pause
+        }
+        isPlaying = !isPlaying;
+    }
+</script>
 		
 		<!-- <div id="audio-control">
 			<i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
