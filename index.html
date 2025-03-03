@@ -98,6 +98,12 @@
             cursor: pointer;
             z-index: 1000; /* Pastikan tombol di atas elemen lain */
             font-size: 14px; /* Mengurangi ukuran font */
+            display: flex;
+            align-items: center; /* Vertically center the content */
+        }
+
+        #play-button i {
+            margin-right: 5px; /* Jarak antara ikon dan teks */
         }
     </style>
 
@@ -140,11 +146,13 @@
 		</div>
 		
 		<div id="audio-control">
-			<i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
-			<span id="play-pause-text" style="margin-left: 8px;">Play</span>
+			<i id="audio-icon" class="bi bi-play-circle" style="font-size: 20px; cursor: pointer;"></i>
+			<span id="play-pause-text" style="margin-left: 5px;">Play</span>
 		</div>
 		
-		<button id="play-button">Tap to Play</button>
+		<button id="play-button">
+			<i class="bi bi-play-circle"></i> Tap to Play
+		</button>
 		
 		<audio id="song" loop>
 			<source src="audio/save-and-sound.mp3" type="audio/mp3">
@@ -156,9 +164,6 @@
 			const song = document.getElementById('song');
 			const playButton = document.getElementById('play-button');
 			let isPlaying = false; // Set to false initially
-		
-			// Tampilkan tombol "Tap to Play" untuk interaksi pengguna
-			playButton.style.display = 'block';
 		
 			playButton.onclick = function () {
 				song.play().then(() => {
