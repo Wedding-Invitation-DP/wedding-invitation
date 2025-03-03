@@ -69,6 +69,21 @@
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+
+	<style>
+        #floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .audio-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
 	
 </head>
 
@@ -94,7 +109,7 @@
 					<li onclick="scrollToElement('fh5co-couple')" style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAAB7UlEQVRIie2VPUiVURjH/+eqSSJN4tDWRRAH5xD8QDCwgqAWhwwSaarBwUGaHFwcBAchGqNNdDaKoKAkBEvUURAVRInw82Jx0Z/De64+Xu5773nv0CD3P533eZ//+T3nW6qoomstwAEPgXfAKnAA7AE/gWGgJsbXAIwCi8ARkAF+AS+AqlLQJmCB4voMDAL1xvfUFxin98WgLX5kIdoHbnvfK+AswJMBvgGPLbQGWAmEAgx7XzuQTeDLaSgHfpLA9Bu45X0/yoAC/AXSKUn9AfvuTNIXSb3OuUOgQ9LdAJ8kfZDUJenYf9dKGqiW1JyXuCbpq6RlSRuStiStO+f2TM6DQOiSpOfOuV1gStKIj3eKyx2ZJdqxrlRvwHzMNP4DlomOYx/m+AEdJm9H5mM8cBQCNvKA00AbcKOIp9GuswW3JgBnjO9toKfWVmrBdQnAVkkKvlBKUsbHY6ephNbKMaUkffftj0C6jD5uhiRhrtlcoAXY9jPwJrATq+5AT+eVNfbBZqLjdAq0JwTPBOQ7YM54Nu3PMR/8A9wrYH4UAwZ4VgSaBmYtFOi1CSlgxiTMA5PAhG9jcrfywFngJQGXT1x1VcBrosc8X/sm734BOERPX9AdXrBCoh3YI+mOogdiXdIn59xJWSOqqKL/qXMXI9MKbss7gAAAAABJRU5ErkJggg==)"></li>
 				</ul>
 				<!-- Kontrol Audio -->
-				<div class="audio-control" style="display: flex; align-items: center; margin-top: 10px;">
+				<div class="audio-control" style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
 					<i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
 					<span id="play-pause-text" style="margin-left: 8px;">Play</span>
 				</div>
@@ -109,7 +124,7 @@
 			const audioIcon = document.getElementById('audio-icon');
 			const playPauseText = document.getElementById('play-pause-text');
 			const song = document.getElementById('song');
-			let isPlaying = false;
+			let isPlaying = true; // Set to true for auto play
 		
 			audioIcon.onclick = function () {
 				if (isPlaying) {
@@ -126,7 +141,7 @@
 				isPlaying = !isPlaying;
 			}
 		</script>
-
+		
 		<div id="overlay">
 			<div class="content">
 				<div class="container">
