@@ -84,6 +84,16 @@
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
+
+        #play-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 
 
@@ -124,47 +134,54 @@
 			</div>
 		</div>
 		
-<<div id="audio-control">
-    <i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
-    <span id="play-pause-text" style="margin-left: 8px;">Play</span>
-</div>
-
-<audio id="song" loop muted>
-    <source src="audio/save-and-sound.mp3" type="audio/mp3">
-</audio>
-
-<script>
-    const audioIcon = document.getElementById('audio-icon');
-    const playPauseText = document.getElementById('play-pause-text');
-    const song = document.getElementById('song');
-    let isPlaying = false; // Set to false initially
-
-    // Memulai pemutaran audio secara otomatis dalam keadaan muted
-    song.play().then(() => {
-        isPlaying = true;
-        audioIcon.classList.remove('bi-play-circle');
-        audioIcon.classList.add('bi-pause-circle');
-        playPauseText.textContent = 'Pause'; // Update text to Pause
-    }).catch((error) => {
-        console.error("Playback failed:", error);
-    });
-
-    audioIcon.onclick = function () {
-        if (isPlaying) {
-            song.pause();
-            audioIcon.classList.remove('bi-pause-circle');
-            audioIcon.classList.add('bi-play-circle');
-            playPauseText.textContent = 'Play'; // Update text to Play
-        } else {
-            song.muted = false; // Unmute audio when playing
-            song.play();
-            audioIcon.classList.remove('bi-play-circle');
-            audioIcon.classList.add('bi-pause-circle');
-            playPauseText.textContent = 'Pause'; // Update text to Pause
-        }
-        isPlaying = !isPlaying;
-    }
-</script>
+		<div id="audio-control">
+			<i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
+			<span id="play-pause-text" style="margin-left: 8px;">Play</span>
+		</div>
+		
+		<button id="play-button">Tap to Play</button>
+		
+		<audio id="song" loop>
+			<source src="audio/save-and-sound.mp3" type="audio/mp3">
+		</audio>
+		
+		<script>
+			const audioIcon = document.getElementById('audio-icon');
+			const playPauseText = document.getElementById('play-pause-text');
+			const song = document.getElementById('song');
+			const playButton = document.getElementById('play-button');
+			let isPlaying = false; // Set to false initially
+		
+			// Tampilkan tombol "Tap to Play" untuk interaksi pengguna
+			playButton.style.display = 'block';
+		
+			playButton.onclick = function () {
+				song.play().then(() => {
+					isPlaying = true;
+					playButton.style.display = 'none'; // Sembunyikan tombol setelah diputar
+					audioIcon.classList.remove('bi-play-circle');
+					audioIcon.classList.add('bi-pause-circle');
+					playPauseText.textContent = 'Pause'; // Update text to Pause
+				}).catch((error) => {
+					console.error("Playback failed:", error);
+				});
+			};
+		
+			audioIcon.onclick = function () {
+				if (isPlaying) {
+					song.pause();
+					audioIcon.classList.remove('bi-pause-circle');
+					audioIcon.classList.add('bi-play-circle');
+					playPauseText.textContent = 'Play'; // Update text to Play
+				} else {
+					song.play();
+					audioIcon.classList.remove('bi-play-circle');
+					audioIcon.classList.add('bi-pause-circle');
+					playPauseText.textContent = 'Pause'; // Update text to Pause
+				}
+				isPlaying = !isPlaying;
+			}
+		</script>
 
 		
 		<!-- <div id="audio-control">
