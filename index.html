@@ -86,13 +86,16 @@
         }
 
         #play-button {
-            margin-top: 20px;
+            position: fixed;
+            top: 20px;
+            right: 100px; /* Sesuaikan posisi tombol */
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            z-index: 1000; /* Pastikan tombol di atas elemen lain */
         }
     </style>
 
