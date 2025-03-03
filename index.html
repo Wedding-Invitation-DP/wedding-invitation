@@ -66,9 +66,10 @@
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
-
+    
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+	
 	<style>
         /* Styling untuk kontrol audio di pojok kanan atas */
         #audio-control {
@@ -84,6 +85,9 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
     </style>
+
+
+
 </head>
 
 <body>
@@ -125,7 +129,7 @@
 			<span id="play-pause-text" style="margin-left: 8px;">Pause</span>
 		</div>
 		
-		<audio id="song" autoplay loop>
+		<audio id="song" autoplay loop muted>
 			<source src="audio/save-and-sound.mp3" type="audio/mp3">
 		</audio>
 		
@@ -133,10 +137,17 @@
 			const audioIcon = document.getElementById('audio-icon');
 			const playPauseText = document.getElementById('play-pause-text');
 			const song = document.getElementById('song');
-			let isPlaying = true; // Set to true for auto play
+			let isPlaying = false; // Set to false initially
 		
 			// Memulai pemutaran audio secara otomatis saat halaman dimuat
-			song.play();
+			song.play().then(() => {
+				isPlaying = true;
+				audioIcon.classList.remove('bi-play-circle');
+				audioIcon.classList.add('bi-pause-circle');
+				playPauseText.textContent = 'Pause'; // Update text to Pause
+			}).catch((error) => {
+				console.error("Playback failed:", error);
+			});
 		
 			audioIcon.onclick = function () {
 				if (isPlaying) {
