@@ -140,17 +140,15 @@
 			</div>
 		</div>
 		
-		<button id="play-button">Tap to Play</button>
-
 		<div id="audio-control">
-			<i id="audio-icon" class="bi bi-play-circle" style="font-size: 24px; cursor: pointer;"></i>
-			<span id="play-pause-text" style="margin-left: 5px;">Play</span>
+			<i id="audio-icon" class="bi bi-pause-circle" style="font-size: 24px; cursor: pointer;"></i>
+			<span id="play-pause-text" style="margin-left: 5px;">Pause</span>
 		</div>
-
+		
 		<audio id="song" loop>
 			<source src="audio/save-and-sound.mp3" type="audio/mp3">
 		</audio>
-
+		
 		<script>
 			const audioIcon = document.getElementById('audio-icon');
 			const playPauseText = document.getElementById('play-pause-text');
@@ -163,6 +161,9 @@
 					isPlaying = true;
 					document.getElementById('open-invitation').style.display = 'none'; // Sembunyikan tombol setelah diputar
 					audioControl.style.display = 'flex'; // Tampilkan kontrol audio
+					audioIcon.classList.remove('bi-play-circle'); // Set ikon ke pause
+					audioIcon.classList.add('bi-pause-circle');
+					playPauseText.textContent = 'Pause'; // Update text to Pause
 				}).catch((error) => {
 					console.error("Playback failed:", error);
 				});
