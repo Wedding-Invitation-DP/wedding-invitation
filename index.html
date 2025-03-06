@@ -20,6 +20,7 @@
 
 	<link rel="icon" href="images/weburl.png">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<!--
       //////////////////////////////////////////////////////
 
@@ -154,20 +155,19 @@
 			const audioIcon = document.getElementById('audio-icon');
 			const playPauseText = document.getElementById('play-pause-text');
 			const song = document.getElementById('song');
-			const playButton = document.getElementById('play-button');
 			const audioControl = document.getElementById('audio-control');
 			let isPlaying = false; // Set to false initially
-
-			playButton.onclick = function () {
+		
+			function playAudio() {
 				song.play().then(() => {
 					isPlaying = true;
-					playButton.style.display = 'none'; // Sembunyikan tombol setelah diputar
+					document.getElementById('open-invitation').style.display = 'none'; // Sembunyikan tombol setelah diputar
 					audioControl.style.display = 'flex'; // Tampilkan kontrol audio
 				}).catch((error) => {
 					console.error("Playback failed:", error);
 				});
-			};
-
+			}
+		
 			audioIcon.onclick = function () {
 				if (isPlaying) {
 					song.pause();
@@ -247,7 +247,8 @@
 							<p>Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>
 
 							<!-- ini utama <button class="btn btn-primary" id="open-invitation">Buka Undangan</button> -->
-							<button class="btn btn-primary" id="open-invitation" onClick="enableScroll()">Buka Undangan</button>
+							<!-- <button class="btn btn-primary" id="open-invitation" onClick="enableScroll()">Buka Undangan</button> -->
+							<button class="btn btn-primary" id="open-invitation" onClick="playAudio()">Buka Undangan</button>
 							<!-- <a href="#home" class="btn btn-lg mt-4" onClick="enableScroll()">Lihat Undangan</a> -->
 						</div>
 					</div>
